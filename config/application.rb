@@ -19,7 +19,7 @@ require "action_cable/engine"
 Bundler.require(*Rails.groups)
 
 # Load dotenv only in development or test environment
-Dotenv::Railtie.load if %w[development test].include? ENV["RAILS_ENV"]
+Dotenv::Rails.load if %w[development test].include? ENV["RAILS_ENV"]
 
 module Challenge
   class Application < Rails::Application
