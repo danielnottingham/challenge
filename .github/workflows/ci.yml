@@ -63,24 +63,22 @@ jobs:
         with:
           bundler-cache: true
 
-      - name: Install dependencies
-        run: |
-          gem install bundler
-          bundle install
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: .node-version
-
-      - name: Install JavaScript dependencies
-        run: yarn install
-
-      - name: Precompile assets
-        run: RAILS_ENV=test bundle exec rails assets:precompile
-
       - name: Install postgres client
         run: sudo apt-get install libpq-dev
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          cache: "yarn"
+          node-version-file: ".node-version"
+
+      - name: Install Yarn packages
+        run: yarn install --check-files --pure-lockfile
+
+      - name: Compile Assets
+        run: |
+          bin/rails css:build
+          bin/rails javascript:build
 
       - name: Create database structure
         run: RAILS_ENV=test bundle exec rails db:create db:schema:load
