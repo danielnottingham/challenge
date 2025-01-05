@@ -1,0 +1,38 @@
+<% content_for :title, "Orders" %>
+
+<div class="flex justify-between items-center my-2 border-b">
+  <h3 class="text-3xl font-bold dark:text-white">Corridas</h3>
+  <%= link_to new_order_path, class: "text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" do %>
+    Nova Corrida
+  <% end %>
+</div>
+
+<div id="orders" class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    ID Usuário
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Local de Partida
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Local de Destino
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Horário
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Valor Estimado
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @orders.each do |order| %>
+                <%= render order %>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+

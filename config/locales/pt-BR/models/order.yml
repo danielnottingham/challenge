@@ -1,0 +1,14 @@
+pt-BR:
+  activerecord:
+    models:
+      order:
+        one: Corrida
+        other: Corridas
+
+    attributes:
+      order:
+        user: Usuário
+        starting_point: Local de partida
+        ending_point: Local de chegada
+        request_time: Horário
+        estimated_value_cents: Valor estimado

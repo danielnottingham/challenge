@@ -1,0 +1,21 @@
+<tr id="<%= dom_id order %>" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+  <td class="px-6 py-4">
+    <%= order.user_id %>
+  </td>
+
+  <td class="px-6 py-4">
+    <%= order.starting_point %>
+  </td>
+
+  <td class="px-6 py-4">
+    <%= order.ending_point %>
+  </td>
+
+  <td class="px-6 py-4">
+    <%= order.request_time.strftime("%H:%M") %>
+  </td>
+
+  <td class="px-6 py-4">
+    <%= order.estimated_value_cents %>
+  </td>
+</tr>
