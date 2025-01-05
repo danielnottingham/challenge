@@ -1,0 +1,46 @@
+<div class="flex items-center justify-center gap-4 my-4">
+  <%= form_with(model: order, class: "mt-4 w-full border p-4 gap-4 shadow-lg rounded-lg") do |form| %>
+    <% if order.errors.any? %>
+      <div class="border border-red-400 text-gray-800 bg-red-100 p-4 rounded-lg">
+        <h2><%= pluralize(order.errors.count, "erros") %> proibiram que esta <%= order.model_name.human.downcase %> fosse salva:</h2>
+
+        <ul>
+          <% order.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="my-2">
+      <%= form.label :starting_point, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+      <%= form.text_field :starting_point, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+    </div>
+
+    <div class="my-2">
+      <%= form.label :ending_point, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+      <%= form.text_field :ending_point, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+    </div>
+
+    <div class="my-2 max-w-[8rem] ">
+      <%= form.label :request_time, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+      <div class="relative">
+        <div class="absolute inset-y-0 end-0 top-0 flex items-center pe-3.5 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4a1 1 0 1 0-2 0v4a1 1 0 0 0 .293.707l3 3a1 1 0 0 0 1.414-1.414L13 11.586V8Z" clip-rule="evenodd"/>
+            </svg>
+        </div>
+        <%= form.time_field :request_time, class: "bg-gray-50 border leading-none border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  %>
+      </div>
+    </div>
+
+    <div class="my-2">
+      <%= form.label :estimated_value_cents, class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+      <%= form.number_field :estimated_value_cents, class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" %>
+    </div>
+
+    <div class="flex items-center justify-end mt-2">
+      <%= form.submit "Cadastrar", class: "text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" %>
+    </div>
+  <% end %>
+</div>
