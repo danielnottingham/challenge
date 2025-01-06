@@ -1,0 +1,4 @@
+pt-BR:
+  orders:
+    create:
+      success: A Corrida foi criada com sucesso!

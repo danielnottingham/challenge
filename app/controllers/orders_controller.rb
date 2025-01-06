@@ -13,7 +13,10 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to orders_path, notice: "Order was successfully created." }
+        format.html do
+          flash[:success] = I18n.t("orders.create.success")
+          redirect_to orders_path
+        end
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new, status: :unprocessable_entity }
