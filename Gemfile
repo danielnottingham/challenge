@@ -58,6 +58,8 @@ group :development do
 end
 
 group :test do
+  gem "capybara"
+  gem "cuprite"
   gem "shoulda-matchers"
   gem "simplecov", require: false
 end
