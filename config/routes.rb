@@ -11,6 +11,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   devise_for :users
-  resources :orders
+  resources :orders, only: %i[index new create]
   root "orders#index"
 end

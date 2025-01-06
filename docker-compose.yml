@@ -11,5 +11,21 @@ services:
     ports:
       - "5432:5432"
 
+  app:
+    stdin_open: true
+    tty: true
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - .:/rails
+    ports:
+      - "3000:3000"
+    environment:
+      RAILS_ENV: ${RAILS_ENV}
+      DATABASE_URL: ${DATABASE_URL}
+    depends_on:
+      - db
+
 volumes:
   db-data:
