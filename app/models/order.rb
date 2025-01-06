@@ -1,4 +1,6 @@
 class Order < ApplicationRecord
+  monetize :estimated_value
+
   belongs_to :user
 
   validates :starting_point, presence: true
